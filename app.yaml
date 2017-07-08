@@ -1,0 +1,28 @@
+runtime: php
+env: flex
+
+runtime_config:
+  document_root: public
+
+# Ensure we skip ".env", which is only for local development
+skip_files:
+  - .env
+
+env_variables:
+  # Put production environment variables here.
+  APP_LOG: errorlog
+  APP_KEY: base64:DaTwe/31ZFM3ey+h02OjqwpdXf6qbqRjkURafO129JI=
+  STORAGE_DIR: /tmp
+  CACHE_DRIVER: database
+  SESSION_DRIVER: database
+  ## Set these environment variables according to your CloudSQL configuration.
+  DB_HOST: localhost
+  DB_DATABASE: foreclosure
+  DB_USERNAME: retran
+  DB_PASSWORD: Rod623fink573*
+  DB_SOCKET: "/cloudsql/black-dragon-172617:us-west1:retran"
+
+beta_settings:
+    # for Cloud SQL, set this value to the Cloud SQL connection name,
+    # e.g. "project:region:cloudsql-instance"
+    cloud_sql_instances: "black-dragon-172617:us-west1:retran"
