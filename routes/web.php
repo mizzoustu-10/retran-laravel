@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/form',function(){
+   return view('form');
+});
+
+Route::get('view-records','StudViewController@index');
+
