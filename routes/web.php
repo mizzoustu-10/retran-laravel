@@ -19,5 +19,7 @@ Route::get('/form',function(){
    return view('form');
 });
 
+Route::get('viewRecordsGUI','firstController@index');
+
 Route::get('view-records','StudViewController@index');
 
