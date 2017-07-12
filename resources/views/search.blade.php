@@ -10,17 +10,14 @@
             <td>APN</td>
             <td>Assessed Value</td>
          </tr>
-         @foreach ($rows as $row)
+         @foreach ($search as $a)
          <tr>
-            <td>{{ $row->APN }}</td>
-            <td>{{ $row->assessed_value }}</td>
+            <td>{{ $a->APN }}</td>
+            <td>{{ $a->assessed_value}}
          </tr>
          @endforeach
       </table>
     
-    {{ Form::open(['method' => 'GET']) }}
-        {{ Form::input('search', 'q', null, ['placeholder' => 'Search...']) }}
-    {{ Form::close() }}
-
+  
    </body>
 </html>
