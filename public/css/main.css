@@ -28,3 +28,7 @@ header nav a{margin: 0 15px;}
 .card .midSection .row .label{float: left;}
 .card .midSection .row .info{float: right;}
 .card .midSection .row b{color: #404040;}
+#pageLinks{text-align: center;}
+#pageLinks ul.pagination{list-style-type: none;}
+#pageLinks ul.pagination li{display: inline-block; border: 1px solid #bbb; padding: 2px; background-color: #fff;}
+#pageLinks ul.pagination li.active{background-color: #00b8f4; color: #fff;}
