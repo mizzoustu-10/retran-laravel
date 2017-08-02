@@ -46,9 +46,14 @@ Route::get('search/{search}', function ($id){
 });
 */
 
-//Route::get('searchresult', 'SearchController@search');
+/*Route::get('searchresult', 'SearchController@search');
 Route::get('searchresult', function(){
     return view('results');
+});
+*/
+
+Route::get('fetchit', function(){
+    return view('fetchit');
 });
 
 Route::post('search', 'SearchController@index');

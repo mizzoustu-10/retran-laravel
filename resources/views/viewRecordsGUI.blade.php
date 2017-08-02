@@ -49,7 +49,7 @@
 	</div>
 	<div id="displayListingWrap">
 		<div class="nonResponseContainer">
-		@foreach ($rows as $row)
+		@foreach ($search as $row)
 			<div class="card">
 				<div class="topBar">
 					<span class="address"><span class="big">{{ $row->Situs_Street }}</span> {{ $row->Situs_City }} {{ $row->Mail_Carrier_Route }}, {{ $row->Situs_Zip }}</span>
@@ -99,7 +99,7 @@
 		@endforeach
 		</div>
 		<div id="pageLinks">
-			{{$rows->links()}}
+			{{$search->links()}}
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -12,16 +12,17 @@ class SearchController extends Controller
     public function index()
     {
         //$search = App\Search::limit(35)->offset(35)->get();
-        $apn = request('apn');
-        $bed = request('bed');
+        $apn = request('fetchinput');
+        //$bed = request('bed');
         //$search = App\Search::find($apn);
         $search = App\Search::where('apn', 'like', '%'.$apn.'%')
-            ->where('bed', '=', $bed)
-            ->get();
+         //   ->where('bed', '=', $bed)
+            ->paginate(5);
         
         //dd($search);
 
-        return view('search', compact('search'));
+        //return view('search', compact('search'));
+        return View('viewRecordsGUI', ['search'=>$search]);
     }
 
     public function show(Search $count2)
@@ -32,11 +33,12 @@ class SearchController extends Controller
         return $count2;
     }
 
-    public function search()
+    /*public function search()
     {
         return view('results');
 
     }
+    */
 
     public function result()
     {
