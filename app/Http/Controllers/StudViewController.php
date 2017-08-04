@@ -6,8 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class StudViewController extends Controller {
-   public function index(){
-      $rows = DB::select('select * from outindexdftr limit 30');
-      return view('stud_view',['rows'=>$rows]);
+    public function index(){
+        //$query = Request::get('q');
+        //return $query;
+
+        $rows = DB::select('select * from outindexdftr limit 30');
+        return view('stud_view',['rows'=>$rows]);
    }
 }

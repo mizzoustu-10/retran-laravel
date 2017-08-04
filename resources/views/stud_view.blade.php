@@ -17,6 +17,10 @@
          </tr>
          @endforeach
       </table>
-   
+    
+    {{ Form::open(['method' => 'GET']) }}
+        {{ Form::input('search', 'q', null, ['placeholder' => 'Search...']) }}
+    {{ Form::close() }}
+
    </body>
 </html>
