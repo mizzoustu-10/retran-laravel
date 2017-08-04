@@ -16,17 +16,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/form',function(){
    return view('form');
 });
-
+/*
 Route::get('viewRecordsGUI','firstController@index');
 
 Route::get('view-records','StudViewController@index');
 
 //Route::get('search', 'SearchController@index');
 //Replaces Below w/Controller
-/*
+
 Route::get('search', function(){
     //$search = App\Search::where('APN', '=', '501-422-018-')->get();
     $search= App\Search::limit(35)->offset(35)->get();
@@ -56,7 +57,13 @@ Route::get('fetchit', function(){
     return view('fetchit');
 });
 
-Route::post('search', 'SearchController@index');
+Route::get('batch', function(){
+    return view('batch');
+});
+
+Route::get('search', 'SearchController@index');
+
+Route::get('batchsearch', 'SearchController@batchsearch');
 /*
 Route::get('/view-records', function(){
     $query = Request::get('q');
