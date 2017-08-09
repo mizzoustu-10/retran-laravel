@@ -3,6 +3,9 @@
  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="{{asset('css/chosen.css')}}">
+<script src="{{asset('js/chosen.jquery.min.js')}}"></script>
   <script>
   $(function() {
     $( "#datestart" ).datepicker();
@@ -12,12 +15,15 @@
     $( "#dateend" ).datepicker();
   });
 
+  $(function() {
+    $( "#multiselect" ).chosen();
+  });
   </script>
 </head>
 
 <body>
 <!--form method="GET" action="/batchsearch">-->
-    
+     
     {{ Form::open(array('url' => '/batchsearch', 'method' => 'get')) }}
     {{csrf_field()}}
     <!--From: <input type="date" name="startdate" id="datestart">
@@ -37,6 +43,15 @@
     Min Lot Size {{ Form::select('minlot', [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
     Max Lot Size {{ Form::select('maxlot', [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
     Units {{ Form::selectRange('units', 1, 20) }}
+    Property Type <select id="multiselect" name="property" multiple>
+        <option value="SFR">Single Family Residence</option>
+        <option value="HOTEL">Hotel</option>
+        <option value="CONDOMINIUM">Condominium</option>
+        <option value="TIME SHARE">Time Share</option>
+        <option value="RESIDENTIAL LOT">Residential Lot</option>
+        <option value="MOBILE HOME PP">Mobile Home</option>
+        <option value="TOWNHOUSE">Townhouse</option>
+    </select>       
     Days on MLS {{ Form::select('minmls', [1, 30, 60, 90, 120, 150, 180, 360]) }}
     {{ Form::select('maxmls', [1, 30, 60, 90, 120, 150, 180, 360]) }}
     {{ Form::submit('Search') }}
