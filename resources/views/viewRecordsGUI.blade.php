@@ -52,7 +52,7 @@
 		@foreach ($search as $row)
 			<div class="card">
 				<div class="topBar">
-					<span class="address"><span class="big">{{ $row->Situs_Street }}</span> {{ $row->Situs_City }} {{ $row->Mail_Carrier_Route }}, {{ $row->Situs_Zip }}</span>
+					<span class="address"><span class="big"><a href=search/{{ $row->count2 }}> {{ $row->Situs_Street }}</a></span> {{ $row->Situs_City }} {{ $row->Mail_Carrier_Route }}, {{ $row->Situs_Zip }}</span>
 					<div class="mainInfo">
 						<div class="bedBathWrap">
 							<span class="bed"><b>{{ $row->bed }}</b> bed</span> +

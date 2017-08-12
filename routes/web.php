@@ -35,7 +35,7 @@ Route::get('search', function(){
 });
 */
 
-Route::get('search/{count2}', 'SearchController@show');
+Route::get('search/{count2}', 'SearchController@resultdetails');
 //Replaces Below w/Controller
 /*
 Route::get('search/{search}', function ($id){

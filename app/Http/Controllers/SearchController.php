@@ -90,12 +90,21 @@ class SearchController extends Controller
             return View('viewRecordsGUI', ['search'=>$search]);
         
     }
-    public function show(Search $count2)
+    public function resultdetails(Search $count2)
     {
+        $apn = App\Search::find($count2)
+            ->pluck('APN');
+
+        $result = DB::table('outindexdftr')
+            ->join('outtd', 'outindexdftr.apn', '=', 'outtd.apn')
+            ->where('outindexdftr.apn', '=', $apn)
+            ->get();
+
+        dd($result);
         //$search = App\Search::find($id);
         //dd($search);
         //return view('search', compact('search'));
-        return $count2;
+        //return $count2;
     }
 
     /*public function search()
