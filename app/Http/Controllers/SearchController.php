@@ -11,7 +11,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchController extends Controller
 {
-    //
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
         //$search = App\Search::limit(35)->offset(35)->get();

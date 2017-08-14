@@ -1,0 +1,7 @@
+.filterWrap{background-color: #464f58; padding: 25px 10px;}
+#searchCategoryWrap{background-color: #606c7a;}
+#searchCategoryWrap a{color: #fff;}
+input{max-width: 100%; background-color: #e8e8e8; border: 1px solid #a5a5a5; padding: 2px 3px;}
+select{max-width: 100%;}
+.taCenter{text-align: center;}
+.colDivider{border-right: 1px solid #e5e5e5;}

@@ -1,0 +1,19 @@
+#displayListingWrap{background-color: #efefef; padding-top: 50px;}
+.card{background-color: #fff; padding: 0 15px 0; margin-bottom: 10px;}
+.card .topBar{background-color: #fbfbfb; margin-bottom: 0;}
+.card .topBar .address{color: #0f6298;}
+.card .topBar .address .big{color: #016297; font-size: 18px; font-weight: bold;}
+.card .topBar .mainInfo{font-size: 16px; color: #909090;}
+.card .topBar .mainInfo div{display: inline-block;}
+.card .topBar .mainInfo div span b{color: #404040;}
+.card .midSection{border-top: 1px solid #d6d6d6; border-bottom: 1px solid #d6d6d6; color: #909090;}
+.card .midSection .col-md-4{border-right: 1px solid #d6d6d6;}
+.card .midSection .col-md-4:last-child{border-right: none;}
+.card .midSection .row{border-bottom: 1px solid #d6d6d6;}
+.card .midSection .col-md-4 .row:last-child{border-bottom: none;}
+.card .midSection .row b{color: #404040;}
+#pageLinks{text-align: center;}
+#pageLinks ul.pagination{list-style-type: none;}
+#pageLinks ul.pagination li{display: inline-block; border: 1px solid #bbb; padding: 2px; background-color: #fff;}
+#pageLinks ul.pagination li.active{background-color: #00b8f4; color: #fff;}
+.row{margin-bottom: 0;}

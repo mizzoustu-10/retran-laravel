@@ -12,18 +12,18 @@
 */
 use App\Search;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','homeController@index')->name('home');
+Route::get('/index','homeController@index')->name('login');
+Route::get('/batch','homeController@batch');
 
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');
 
-Route::get('/form',function(){
-   return view('form');
-});
-/*
+Route::get('/register', 'RegistrationController@create');
+Route::post ('/register', 'RegistrationController@store');
+
 Route::get('viewRecordsGUI','firstController@index');
-
-Route::get('view-records','StudViewController@index');
+/*
 
 //Route::get('search', 'SearchController@index');
 //Replaces Below w/Controller
@@ -53,17 +53,9 @@ Route::get('searchresult', function(){
 });
 */
 
-Route::get('fetchit', function(){
-    return view('fetchit');
-});
-
-Route::get('batch', function(){
-    return view('batch');
-});
-
 Route::get('search', 'SearchController@index');
 
-Route::get('batchsearch', 'SearchController@batchsearch');
+Route::post('batchsearch', 'SearchController@batchsearch');
 /*
 Route::get('/view-records', function(){
     $query = Request::get('q');
