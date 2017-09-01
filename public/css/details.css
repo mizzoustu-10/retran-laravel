@@ -1,0 +1,47 @@
+#wrapper {
+    margin-right: 200px;
+  }
+  #content {
+    float: left;
+    width: 80%;
+    margin-left: 100px;
+    background-color: #FFF;
+    color: #898989;
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  #sidebar {
+    float: right;
+    width: 20%;
+    margin-right: -100px;
+    background-color: #FFF;
+    color: #898989;
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  #cleared {
+    clear: both;
+  }
+
+  #street {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+
+  #date {
+        font-size: 18px;
+        font-weight: bold;
+        color: black;
+  }
+
+  #number {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+  }
+
+  #usecode {
+      font-weight: bold;
+      color: black;
+  }

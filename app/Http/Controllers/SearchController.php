@@ -102,7 +102,10 @@ class SearchController extends Controller
             ->where('outindexdftr.apn', '=', $apn)
             ->get();
 
-        dd($result);
+
+        return View('resultDetailsGUI', ['result'=>$result]);
+
+        //dd($result);
         //$search = App\Search::find($id);
         //dd($search);
         //return view('search', compact('search'));
