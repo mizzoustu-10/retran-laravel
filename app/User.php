@@ -7,6 +7,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+	public function bookmarks(){
+		return $this->hasMany(Bookmark::class);
+	}
+
 	use Notifiable;
 
 	/**

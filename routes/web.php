@@ -35,7 +35,14 @@ Route::get('search', function(){
 });
 */
 
+Route::get('bookmarkRecord/{count2}', 'bookmarkController@bookmarkRecord');
+Route::post('bookmark/{bookmark}', 'bookmarkController@destroyBookmark');
+Route::get('account/{user}', 'userController@show')->name('account');
+
+
+
 Route::get('search/{count2}', 'SearchController@resultdetails');
+
 //Replaces Below w/Controller
 /*
 Route::get('search/{search}', function ($id){

@@ -149,6 +149,11 @@
 							</div>
 						</div>
 					</div>
+					<div class="botSection row">
+						<div class="col-md-12">
+							<a href="/bookmarkRecord/{{ $row->count2 }}">Bookmark Record</a>
+						</div>
+					</div>
 				</div>
 			@endforeach
 			<div id="pageLinks">

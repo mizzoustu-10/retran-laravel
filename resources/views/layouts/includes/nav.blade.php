@@ -16,7 +16,8 @@
 					<a class="nav-link" href="#">Newest Records</a>
 				</li>
 			</ul>
-			<a class="nav-link ml-auto" href="/logout">Logout</a>
+			<a class="nav-link" href="/account/{{Auth::id()}}">My Account</a>
+			<a class="nav-link" href="/logout">Logout</a>
 		</div>
 	@endif
 	@if(!Auth::check())

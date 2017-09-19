@@ -10,11 +10,13 @@
                     <div><span id="street">{{ $row->Situs_Street }}</span>, {{ $row->Situs_City }} CA, {{ $row->Situs_Zip }}</div>
                     <div><span id="number">{{ $row->bed }}</span> bed + <span id="number">{{ $row->bath }}</span> bath | <span id="number">{{ $row->sq_feet }}</span> Sq. Ft. | <span id="number">19{{ $row->yr_built }}</span> Build Year</div>
                     <div><span id="usecode">{{ $row->use_code }}</span></div>
+                    <div>&nbsp;</div>
                 </div>
                 <div id="headbodyright">
                     <div>Recording Notice Date: <span id="number">{{ $row->recording_date }}</span></div>
                     <div>Loan Amount: <span id="number">${{ number_format((int)$row->loan_amt) }}</span></div>
                     <div>Default Amount: <span id="rednumber">${{ number_format((int)$row->amount) }}</span></div>
+                   <div> <a href="/bookmarkRecord/{{ $row->count2 }}">Bookmark Record</a></div>
                 </div>
                 <div id="cleared"></div>
                 <div id="body">
