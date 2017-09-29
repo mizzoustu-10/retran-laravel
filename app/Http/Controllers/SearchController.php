@@ -97,13 +97,41 @@ class SearchController extends Controller
         $apn = App\Search::find($count2)
             ->pluck('APN');
 
+        /*    
         $result = DB::table('outindexdftr')
             ->join('outtd', 'outindexdftr.apn', '=', 'outtd.apn')
             ->where('outindexdftr.apn', '=', $apn)
             ->get();
-
-
-        return View('resultDetailsGUI', ['result'=>$result]);
+        */
+            $result = DB::table('outindexdftr')
+            ->join('outtracking', 'outindexdftr.apn', '=', 'outtracking.apn')
+            ->where('outindexdftr.apn', '=', $apn)
+            ->get();
+            $count = count($result);
+            
+        if ($count == 0)
+        {
+            $result = DB::table('outindexdftr')
+            ->join('outtd', 'outindexdftr.apn', '=', 'outtd.apn')
+            ->where('outindexdftr.apn', '=', $apn)
+            ->get();
+            $count = count($result);
+            if ($count == 0)
+            {
+                $result = DB::table('outindexdftr')
+                ->where('outindexdftr.apn', '=', $apn)
+                ->get();
+                return View('resultDetailsGUI', ['result'=>$result]);
+            }
+            else
+            {
+                return View('resultDetailsGUI', ['result'=>$result]);
+            }
+        }
+        else
+        {
+            return View('resultDetailsGUI', ['result'=>$result]);
+        }
 
         //dd($result);
         //$search = App\Search::find($id);

@@ -85,19 +85,33 @@
                         Trustee Number: <span class="bodynumber">{{ $row->tee_number }}</span><br/>
                     </div>
                 </div>
-                <div class="table">
-                    <span class="tableheader">ABRIDGED TITLE CHAIN OF FIRST 10 OPEN TDS AND LIENS (AS OF: {{ $row->recording_date }})</span>
-                    <br/><br/>
-                    <table align="center">
-                        <tr>
-                            <th class="headrow">Grantee/Lender</th>
+                <?php
+                    $apn = $row->APN;
+                    $result = DB::table('outindexdftr')
+                    ->join('outtd', 'outindexdftr.apn', '=', 'outtd.apn')
+                    ->where('outindexdftr.apn', '=', $apn)
+                    ->get();
+                    //dd($row);
+                foreach ($result as $row)
+                {
+                if (isset($row))
+                {
+                //print $row->bene1;
+                print '<div class="table">';
+                print  '<span class="tableheader">ABRIDGED TITLE CHAIN OF FIRST 10 OPEN TDS AND LIENS (AS OF: ' . $row->recording_date . ')</span>';
+                print    '<br/><br/>';
+                print    '<table align="center">';
+                
+                print   '<tr>
+                        <th class="headrow">Grantee/Lender</th>
                             <th class="headrow">Amount</th>
                             <th class="headrow">Type</th>
                             <th class="headrow">Date</th>
                             <th class="headrow">Verified</th>
                             <th class="headrow">Document #</th>
-                        </tr>
-                        <?php 
+                        </tr>';
+                         
+                          
                             for ($count=1; $count <= 10; $count++)
                             {
                                 $benefit = 'bene' . $count;
@@ -118,7 +132,14 @@
                                     echo '</tr>';
                                 }
                             }
-                        ?>
+                            
+                    }            
+                else {
+                        print "blah";
+                }
+                break;
+            }
+                ?>
                         <tr>
                             <th class="headrow"></th>
                             <th class="headrow"></th>
