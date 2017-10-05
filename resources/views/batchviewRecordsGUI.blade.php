@@ -157,7 +157,7 @@
 				</div>
 			@endforeach
 			<div id="pageLinks">
-			{{ $search->appends($_GET)->render() }}
+                {{ $search->appends($_GET)->render() }}
 			</div>
 		</div>
 	@endif

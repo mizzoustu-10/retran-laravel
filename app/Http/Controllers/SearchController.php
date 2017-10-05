@@ -14,58 +14,14 @@ class SearchController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
-    public function index()
+    public function index(Request $request)
     {
-        //$search = App\Search::limit(35)->offset(35)->get();
-        $fetchinput = request('fetchinput');
-        $criteria = request('criteria');
+        $fetchinput = $request->input('fetchinput');
+        $criteria = $request->input('criteria');
         $search = App\Search::where($criteria, 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
+                ->paginate(10);
             return View('viewRecordsGUI', ['search'=>$search]);
-        /*
-        if ($criteria == "apn")
-        {
-            $search = App\Search::where('apn', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-        }
-        elseif ($criteria == "situs_street") {
-             $search = App\Search::where('Situs_Street', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-        }
-        elseif ($criteria == "document_number") {
-             $search = App\Search::where('document_number', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-            return View('viewRecordsGUI', ['search'=>$search]);
-        }
-        elseif ($criteria == "tee_loan_number") {
-            $search = App\Search::where('tee_loan_number', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-        }
-        elseif ($criteria == "tee_number") {
-            $search = App\Search::where('tee_number', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-        }
-        elseif ($criteria == "trustor_full_name") {
-            $search = App\Search::where('trustor_full_name', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-        }
-        elseif ($criteria == "owner_phone_number") {
-            $search = App\Search::where('owner_phone_number', 'like', '%'.$fetchinput.'%')
-                ->paginate(5);
-        }
-        else {
-            return view('search');
-        }
-        */
-        /*
-        $search = App\Search::where('apn', 'like', '%'.$fetchinput.'%')
-         //   ->where('bed', '=', $bed)
-            ->paginate(5);
-        */
-        //dd($criteria);
-
-        //return view('search', compact('search'));
-       // return View('viewRecordsGUI', ['search'=>$search]);
+            
     }
     public function batchsearch()
     {
@@ -83,14 +39,13 @@ class SearchController extends Controller
         
         $search = App\Search::whereBetween('recording_date', [$from, $to])
                 ->where('bed', '=', $bed)
-                //->where('CAST(bath AS unsigned)', '=', $bath)
                 ->where('bath', '=', $bath)
                 ->whereBetween('sq_feet', [$minsq, $maxsq])
                 ->whereBetween('lot_size', [$minlot, $maxlot])
                 ->where('number_of_units', '=', $units)
-                ->paginate(5);
+                ->paginate(10);
+            
             return View('viewRecordsGUI', ['search'=>$search]);
-        
     }
     public function resultdetails(Search $count2)
     {

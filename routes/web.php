@@ -62,6 +62,7 @@ Route::get('searchresult', function(){
 
 Route::get('search', 'SearchController@index');
 
+Route::get('batchsearch', 'SearchController@batchsearch');
 Route::post('batchsearch', 'SearchController@batchsearch');
 /*
 Route::get('/view-records', function(){

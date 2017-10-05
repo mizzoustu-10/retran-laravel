@@ -16,7 +16,7 @@
 				</ul>
 			</div>
 			<div class="row">
-				{{ Form::open(array('url' => '/batchsearch', 'method' => 'post')) }}
+				{{ Form::open(array('url' => '/batchsearch', 'method' => 'get')) }}
 				{{csrf_field()}}
 				<div class="row">
 					<div class="col-md-6">
