@@ -16,13 +16,14 @@
 					<a class="nav-link" href="#">Newest Records</a>
 				</li>
 			</ul>
-			<a class="nav-link" href="/account/{{Auth::id()}}">My Account</a>
+			<a class="nav-link" href="/account">My Account</a>
 			<a class="nav-link" href="/logout">Logout</a>
 		</div>
 	@endif
 	@if(!Auth::check())
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<a class="nav-link ml-auto" href="/">Login</a>
+			<a class="nav-link ml-auto" href="/register">Register</a>
+			<a class="nav-link" href="/">Login</a>
 		</div>
 	@endif
 </nav>

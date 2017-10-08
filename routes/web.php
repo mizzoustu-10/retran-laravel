@@ -37,7 +37,9 @@ Route::get('search', function(){
 
 Route::get('bookmarkRecord/{count2}', 'bookmarkController@bookmarkRecord');
 Route::post('bookmark/{bookmark}', 'bookmarkController@destroyBookmark');
-Route::get('account/{user}', 'userController@show')->name('account');
+
+# Account
+Route::get('/account', 'userController@show')->name('account');
 
 
 
