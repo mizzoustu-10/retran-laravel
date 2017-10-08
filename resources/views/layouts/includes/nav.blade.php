@@ -9,14 +9,14 @@
 				<li class="nav-item {{Request::is('/') ? 'active' : ''}}">
 					<a class="nav-link" href="/">Fetch-It</a>
 				</li>
-				<li class="nav-item {{Request::is('batch') ? 'active' : ''}}">
+				<li class="nav-item {{Request::is('batch*') ? 'active' : ''}}">
 					<a class="nav-link" href="/batch">Batch Search</a>
 				</li>
 				<li class="nav-item {{Request::is('newestRecords') ? 'active' : ''}}">
 					<a class="nav-link" href="#">Newest Records</a>
 				</li>
 			</ul>
-			<a class="nav-link" href="/account">My Account</a>
+			<a class="nav-link {{Request::is('account') ? 'active' : ''}}" href="/account">My Account</a>
 			<a class="nav-link" href="/logout">Logout</a>
 		</div>
 	@endif

@@ -13,7 +13,8 @@
 
 	<!-- Custom styles for this template -->
 	<link href="/css/app.css" rel="stylesheet">
-	@yield('page-css')
+	{{-- @yield('page-css') --}}
+	@stack('css')
 	<!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
 	</script>
@@ -23,6 +24,7 @@
 	@include ('layouts/includes.nav')
 	@yield('content')
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	@yield('page-js')
+	{{-- @yield('page-js') --}}
+	@stack('scripts')
 </body>
 </html>

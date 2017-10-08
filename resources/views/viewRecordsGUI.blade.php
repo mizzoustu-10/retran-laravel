@@ -1,11 +1,9 @@
-@extends('layouts.master')
-@section('page-css')
+@push('css')
 	<link rel="stylesheet" href="/css/records.css">
-@endsection
-@section('content')
+@endpush
 	@if(isset($search))
 		<div class="container-fluid" id="displayListingWrap">
-			@foreach ($search as $row)
+			@forelse ($search as $row)
 				<div class="card">
 					<div class="row topBar">
 						<div class="col-md-7">
@@ -155,14 +153,15 @@
 						</div>
 					</div>
 				</div>
-			@endforeach
+			@empty
+				<h2 class="taCenter">No Matches</h2>
+			@endforelse
 			<div id="pageLinks">
 			{{ $search->appends($_GET)->render() }}
 			</div>
 		</div>
 	@endif
-@endsection
-@section('page-js')
+@push('scripts')
 	<script>
 		$(document).ready(function(){
 			$("#searchCategoryWrap ul li").click(function(){
@@ -171,4 +170,4 @@
 			});
 		});
 	</script>
-@endsection
+@endpush

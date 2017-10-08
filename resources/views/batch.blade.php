@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('page-css')
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" href="/css/search.css">
-@endsection
+@push('css')
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" href="/css/search.css">
+@endpush
 @section('content')
 	<div class="container-fluid filterWrap">
-		<div class="container">
+		<div class="container" id="searchForm">
 			<div class="row mb20">
 				<ul class="nav nav-pills rounded" id="searchCategoryWrap">
 					<li class="nav-item"><a href="#" class="nav-link active">Notice of Default</a></li>
@@ -345,14 +345,43 @@
 				{{ Form::close() }}
 			</div>
 		</div>
+		<div class="container" id="searchCollapse">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary" id="modifySearch">Modify Search</button>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<div class="form-group">
+						<button type="submit" class="btn" id="saveSearch">Save Search</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+	@include('viewRecordsGUI')
 @endsection
-@section('page-js')
+@push('scripts')
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script>
 		$(document).ready(function(){
+			@if(isset($search))
+				var count = <?php echo count($search); ?>;
+				if(count > 0){
+					var height = $("#searchForm").height();
+					$("#searchForm").css('height', 0);
+					$("#searchCollapse").show();
+					$("#modifySearch").click(function(){
+						$("#searchCollapse").hide();
+						$("#searchForm").css('height', height);
+					});
+				}
+			@endif
 			$( "#datestart" ).datepicker();
 			$( "#dateend" ).datepicker();
 		});
 	</script>
-@endsection
+@endpush

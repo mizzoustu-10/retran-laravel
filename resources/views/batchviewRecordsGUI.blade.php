@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('page-css')
+@push('css')
 	<link rel="stylesheet" href="/css/records.css">
-@endsection
+@endpush
 @section('content')
 	@if(isset($search))
 		<div class="container-fluid" id="displayListingWrap">
@@ -162,7 +162,7 @@
 		</div>
 	@endif
 @endsection
-@section('page-js')
+@push('scripts')
 	<script>
 		$(document).ready(function(){
 			$("#searchCategoryWrap ul li").click(function(){
@@ -171,4 +171,4 @@
 			});
 		});
 	</script>
-@endsection
+@endpush

@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('page-css')
+@push('css')
 	<link rel="stylesheet" href="/css/details.css">
-@endsection
+@endpush
 @section('content')
 	@if(isset($result))
         @foreach ($result as $row)
@@ -156,7 +156,7 @@
     @endif
 @endsection
 
-@section('page-js')
+@push('scripts')
 	<script>
 		$(document).ready(function(){
 			$("#searchCategoryWrap ul li").click(function(){
@@ -165,4 +165,4 @@
 			});
 		});
 	</script>
-@endsection
+@endpush
