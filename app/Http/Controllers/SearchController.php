@@ -20,7 +20,7 @@ class SearchController extends Controller
         $criteria = $request->input('criteria');
         $search = App\Search::where($criteria, 'like', '%'.$fetchinput.'%')
                 ->paginate(10);
-            return View('viewRecordsGUI', ['search'=>$search]);
+            return View('batch', ['search'=>$search]);
             
     }
     public function batchsearch()
@@ -45,7 +45,7 @@ class SearchController extends Controller
                 ->where('number_of_units', '=', $units)
                 ->paginate(10);
             
-            return View('viewRecordsGUI', ['search'=>$search]);
+            return View('batch', ['search'=>$search]);
     }
     public function resultdetails(Search $count2)
     {

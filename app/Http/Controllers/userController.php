@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class userController extends Controller
 {
@@ -11,7 +12,8 @@ class userController extends Controller
     	$this->middleware('auth');
     }
 
-    public function show(User $user){
+    public function show(){
+    	$user = User::whereId(Auth::id())->firstOrFail();
 	return view('userAccount', compact('user'));
     }
 }

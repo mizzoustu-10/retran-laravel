@@ -7,6 +7,7 @@ html,body{font-size: 14px; color: #333; font-family: "Helvetica Neue", Helvetica
 .mb10{margin-bottom: 10px;}
 .bgW{background-color: #fff;}
 .nested{padding: 10px;}
-input[type="submit"]:hover{cursor: pointer;}
+input[type="submit"]:hover, button.btn-primary:hover{cursor: pointer;}
 .nav-link{color: #949595;}
 .nav-link:hover{color: #bfcaca;}
+.nav-link.active{color: #fff;}

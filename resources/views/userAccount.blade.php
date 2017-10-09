@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('page-css')
+@push('css')
 	<link rel="stylesheet" href="/css/account.css">
-@endsection
+@endpush
 @section('content')
 	<div class="container">
 		<div class="row">

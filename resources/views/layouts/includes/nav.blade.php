@@ -9,20 +9,21 @@
 				<li class="nav-item {{Request::is('/') ? 'active' : ''}}">
 					<a class="nav-link" href="/">Fetch-It</a>
 				</li>
-				<li class="nav-item {{Request::is('batch') ? 'active' : ''}}">
+				<li class="nav-item {{Request::is('batch*') ? 'active' : ''}}">
 					<a class="nav-link" href="/batch">Batch Search</a>
 				</li>
 				<li class="nav-item {{Request::is('newestRecords') ? 'active' : ''}}">
 					<a class="nav-link" href="#">Newest Records</a>
 				</li>
 			</ul>
-			<a class="nav-link" href="/account/{{Auth::id()}}">My Account</a>
+			<a class="nav-link {{Request::is('account') ? 'active' : ''}}" href="/account">My Account</a>
 			<a class="nav-link" href="/logout">Logout</a>
 		</div>
 	@endif
 	@if(!Auth::check())
 		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
-			<a class="nav-link ml-auto" href="/">Login</a>
+			<a class="nav-link ml-auto" href="/register">Register</a>
+			<a class="nav-link" href="/">Login</a>
 		</div>
 	@endif
 </nav>
