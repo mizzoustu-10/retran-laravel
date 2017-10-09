@@ -68,23 +68,24 @@
 							<div class="row taCenter">
 								<div class="col-md-2 colDivider">
 									{{Form::label('beds', 'Beds')}} <br>
-										{{ Form::selectRange('bed', 1, 10, array('id' => 'beds')) }}
+									{{ Form::select('bath', ['No Max', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) }}
 								</div>
 								<div class="col-md-2 colDivider">
 									{{Form::label('baths', 'Baths')}} <br>
-										{{ Form::selectRange('bath', 1, 10, array('id' => 'baths')) }}
+										
+										{{ Form::select('bath', ['No Max', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) }}
 								</div>
 								<div class="col-md-4 colDivider">
 									{{Form::label('minsqft', 'Square Feet')}}
 									<div class="row">
 										<div class="col-md-5">
-											{{ Form::select('minsqft', [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
+											{{ Form::select('minsqft', ['No Min', 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
 										</div>
 										<div class="col-md-2">
 											To:
 										</div>
 										<div class="col-md-5">
-											{{ Form::select('maxsqft', [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
+											{{ Form::select('maxsqft', ['No Max', 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
 										</div>
 									</div>
 								</div>
@@ -92,13 +93,13 @@
 									{{Form::label('minlot', 'Lot Size')}}
 									<div class="row">
 										<div class="col-md-5">
-											{{ Form::select('minlot', [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
+											{{ Form::select('minlot', ['No Min', 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
 										</div>
 										<div class="col-md-2">
 											To:
 										</div>
 										<div class="col-md-5">
-											{{ Form::select('maxlot', [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
+											{{ Form::select('maxlot', ['No Max', 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 8500, 9000, 9500, 10000]) }}
 										</div>
 									</div>
 								</div>
