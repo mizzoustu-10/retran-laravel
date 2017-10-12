@@ -68,7 +68,7 @@
 							<div class="row taCenter">
 								<div class="col-md-2 colDivider">
 									{{Form::label('beds', 'Beds')}} <br>
-									{{ Form::select('bath', ['No Max', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) }}
+									{{ Form::select('bed', ['No Max', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) }}
 								</div>
 								<div class="col-md-2 colDivider">
 									{{Form::label('baths', 'Baths')}} <br>
