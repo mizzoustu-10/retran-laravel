@@ -34,7 +34,18 @@
 									<span class="label">County</span>
 								</div>
 								<div class="col-md-7">
-									<span class="info county"><b>{{ $row->county }}</b> (retran code)</span>
+									<span class="info county"><b>
+									<?php 
+										$county = $row->county;
+										if ($county != "")
+										{
+											print $county;
+										}
+										else {
+											print "LA";
+										}
+									?>
+									</b> (retran code)</span>
 								</div>
 							</div>
 							<div class="row">

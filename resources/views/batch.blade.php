@@ -2,6 +2,7 @@
 @push('css')
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="/css/search.css">
+	<link rel="stylesheet" href="/css/jquery.multiselect.css"
 @endpush
 @section('content')
 	<div class="container-fluid filterWrap">
@@ -61,6 +62,16 @@
 								<div class="col-md-6">
 									{{Form::label('location', 'Location')}} <br>
 										{{ Form::text('Situs_zip', '', array('id' => 'location', 'placeholder' => 'Enter City, County, or Zip Code')) }}
+									<br/>
+									{{Form::label('county', 'County')}} <br>
+										{{Form::select('county', array(
+											'LA' => 'Los Angeles',
+											'RI' => 'Riverside',
+											'SD' => 'San Diego',
+											'OC' => 'Orange County',
+											'SR' => 'San Bernandino',
+											'VE' => 'Ventura'
+										),null,array('multiple' => 'multiple'))}}
 								</div>
 								
 							</div>
@@ -367,6 +378,7 @@
 @endsection
 @push('scripts')
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="{{ asset('js/jquery.multiselect.js') }}"></script>
 	<script>
 		$(document).ready(function(){
 			@if(isset($search))
@@ -385,4 +397,11 @@
 			$( "#dateend" ).datepicker();
 		});
 	</script>
+	<script>
+		$('#county').multiselect({
+    	selectAll: true,
+		placeholder: 'County',
+	});
+	</script>
+	
 @endpush
