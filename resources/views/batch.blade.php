@@ -2,7 +2,8 @@
 @push('css')
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<link rel="stylesheet" href="/css/search.css">
-	<link rel="stylesheet" href="/css/jquery.multiselect.css"
+	<link rel="stylesheet" href="/css/jquery.multiselect.css">
+	<link rel="stylesheet" href="/css/chosen.css">
 @endpush
 @section('content')
 	<div class="container-fluid filterWrap">
@@ -72,6 +73,23 @@
 											'SR' => 'San Bernandino',
 											'VE' => 'Ventura'
 										),null,array('multiple' => 'multiple'))}}
+
+									{{Form::label('city', 'City')}} <br>
+									<select multiple="multiple" id="city" name="city">
+											<?php	
+												$result = DB::table('outindexdftr')
+												->select('situs_city')
+												->groupBy('situs_city')
+												->get();
+												
+												foreach ($result as $row)
+												{
+													echo "<option value='$row->situs_city'>".ucwords(strtolower($row->situs_city))."</option>";
+												}
+											?>
+									</select>
+		
+										
 								</div>
 								
 							</div>
@@ -379,6 +397,7 @@
 @push('scripts')
 	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="{{ asset('js/jquery.multiselect.js') }}"></script>
+	<script src="{{ asset('js/chosen.jquery.js') }}"></script>
 	<script>
 		$(document).ready(function(){
 			@if(isset($search))
@@ -403,5 +422,9 @@
 		placeholder: 'County',
 	});
 	</script>
-	
+	<script>
+		 $("#city").chosen({
+			placeholder_text_multiple: "Select Some Cities",
+		 });
+	</script>
 @endpush

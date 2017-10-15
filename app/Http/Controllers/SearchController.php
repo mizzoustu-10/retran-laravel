@@ -27,6 +27,7 @@ class SearchController extends Controller
     {
         $from = request('startdate');
         $to = request('enddate');
+        $city = request('city');
         $bed = request('bed');
         $bath = request('bath');
         $minsq = request('minsqft');
@@ -38,6 +39,7 @@ class SearchController extends Controller
         $maxmls = request('maxmls');
         
         $search = App\Search::whereBetween('recording_date', [$from, $to])
+                ->where('situs_city', '=', $city)
                 ->where('bed', '=', $bed)
                 ->where('bath', '=', $bath)
                 ->whereBetween('sq_feet', [$minsq, $maxsq])
