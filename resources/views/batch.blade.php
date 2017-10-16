@@ -65,17 +65,17 @@
 										{{ Form::text('Situs_zip', '', array('id' => 'location', 'placeholder' => 'Enter City, County, or Zip Code')) }}
 									<br/>
 									{{Form::label('county', 'County')}} <br>
-										{{Form::select('county', array(
+										{{Form::select('county[]', array(
 											'LA' => 'Los Angeles',
 											'RI' => 'Riverside',
 											'SD' => 'San Diego',
 											'OC' => 'Orange County',
 											'SR' => 'San Bernandino',
 											'VE' => 'Ventura'
-										),null,array('multiple' => 'multiple'))}}
+										),null,array('multiple' => 'multiple', 'class' => 'county'))}}
 
 									{{Form::label('city', 'City')}} <br>
-									<select multiple="multiple" id="city" name="city">
+									<select multiple="multiple" id="city" class="city" name="city[]">
 											<?php	
 												$result = DB::table('outindexdftr')
 												->select('situs_city')
@@ -417,13 +417,13 @@
 		});
 	</script>
 	<script>
-		$('#county').multiselect({
+		$('.county').multiselect({
     	selectAll: true,
 		placeholder: 'County',
 	});
 	</script>
 	<script>
-		 $("#city").chosen({
+		 $(".city").chosen({
 			placeholder_text_multiple: "Select Some Cities",
 		 });
 	</script>

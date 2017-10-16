@@ -23,11 +23,12 @@ class SearchController extends Controller
             return View('batch', ['search'=>$search]);
             
     }
-    public function batchsearch()
+    public function batchsearch(Request $request)
     {
         $from = request('startdate');
         $to = request('enddate');
         $city = request('city');
+        $county = request('county');
         $bed = request('bed');
         $bath = request('bath');
         $minsq = request('minsqft');
