@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Search;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\BatchSearch;
 
 class SearchController extends Controller
 {
@@ -23,8 +24,9 @@ class SearchController extends Controller
             return View('batch', ['search'=>$search]);
             
     }
-    public function batchsearch(Request $request)
+    public function batchsearch(Request $request, Search $search)
     {
+        /*
         $from = request('startdate');
         $to = request('enddate');
         $city = request('city');
@@ -38,17 +40,24 @@ class SearchController extends Controller
         $units = request('units');
         $minmls = request('minmls');
         $maxmls = request('maxmls');
+
+        $countcounty = count($county);
+        $countcity = count($city);
         
-        $search = App\Search::whereBetween('recording_date', [$from, $to])
-                ->where('situs_city', '=', $city)
+        return BatchSearch::apply($request);
+        
+        
+        /*$search = App\Search::whereBetween('recording_date', [$from, $to])
+                ->where('situs_city', '=', $city[0])
+                    ->orwhere('situs_city', '=', $city[1])
                 ->where('bed', '=', $bed)
                 ->where('bath', '=', $bath)
                 ->whereBetween('sq_feet', [$minsq, $maxsq])
                 ->whereBetween('lot_size', [$minlot, $maxlot])
                 ->where('number_of_units', '=', $units)
                 ->paginate(10);
-            
-            return View('batch', ['search'=>$search]);
+                dd($search);
+            //return View('batch', ['search'=>$search]);*/
     }
     public function resultdetails(Search $count2)
     {
