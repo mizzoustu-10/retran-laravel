@@ -19,40 +19,50 @@ class BatchSearch
         
         if (isset($county))
         {
-            $countcounty = count($county);
             for ($counter = 0; $counter < $countcounty; $counter++)
             {
-                if ($counter == 0)
+                if ($countcounty == 1)
                 {
                     if ($county[$counter] == "LA")
                     {
                         $county[$counter] = " ";
-                        $search->where('county', '=', $county[$counter]);
+                        $search->where(function ($query) use ($county, $countcounty, $counter)
+                        {
+                            $query->where('county', '=', $county[$counter]);
+                        });
+                        
                     }
                     else
                     {
-                        $search->where('county', '=', $county[$counter]);
+                        $search->where(function ($query) use ($county, $countcounty, $counter)
+                        {
+                            $query->where('county', '=', $county[$counter]);
+                        });
                     }
                 }
                 else
                 {
-                    if ($county[$counter] == "LA")
-                    {
-                        $county[$counter] = " ";
-                        $search->orwhere(function ($query)
+                   
+                        $search->where(function ($query) use ($county, $countcounty, $counter)
                         {
-                            $query->where('county', '=', $county[$counter]);
-                        });
-                        //$search->orwhere('county','=', $county[$counter]);
-                    }
-                    else
-                    {
-                        $search->orwhere(function ($query)
-                        {
-                            $query->where('county', '=', $county[$counter]);
+                            if ($county[$counter] == "LA")
+                            {
+                                $county[$counter] = " ";
+                            }
+                            
+                            if ($counter == 0)
+                            {
+                                print $counter;
+                                $query->where('county', '=', $county[$counter])
+                            }
+                            else
+                            {
+                                print $counter;
+                                ->orwhere('county', '=', $county[$counter]);
+                            }
                         });
                         //$search->where('county', '=', $county[$counter]);
-                    }
+                    
                 }
             }
 

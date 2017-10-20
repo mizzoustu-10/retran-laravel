@@ -9,6 +9,7 @@ use App\Search;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\BatchSearch;
+use App\BatchSearch1;
 
 class SearchController extends Controller
 {
@@ -26,7 +27,7 @@ class SearchController extends Controller
     }
     public function batchsearch(Request $request, Search $search)
     {
-        /*
+        
         $from = request('startdate');
         $to = request('enddate');
         $city = request('city');
@@ -44,8 +45,17 @@ class SearchController extends Controller
         $countcounty = count($county);
         $countcity = count($city);
         
-        return BatchSearch::apply($request);
+        return BatchSearch1::apply($request);
         
+        /*
+        $search = App\Search::whereBetween('recording_date', [$from, $to])
+        ->where(function ($query) use ($county)
+        {
+            $query->where('county', '=', $county[0]);
+            $query->orwhere('county', '=', $county[1]);
+        })
+        ->paginate(10);
+        return View('batch', ['search'=>$search]);*/
         
         /*$search = App\Search::whereBetween('recording_date', [$from, $to])
                 ->where('situs_city', '=', $city[0])
