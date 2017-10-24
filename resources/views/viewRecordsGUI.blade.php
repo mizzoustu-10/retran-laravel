@@ -160,7 +160,7 @@
 					</div>
 					<div class="botSection row">
 						<div class="col-md-12">
-							<a href="/bookmarkRecord/{{ $row->count2 }}">Bookmark Record</a>
+							<li class="bookmarkIt" data-record-value="{{ $row->count2 }}">Bookmark Record</li>
 						</div>
 					</div>
 				</div>
@@ -175,9 +175,34 @@
 @push('scripts')
 	<script>
 		$(document).ready(function(){
+			var record = 0;
+			var elem = 0;
 			$("#searchCategoryWrap ul li").click(function(){
 				$("#searchCategoryWrap ul li.active").removeClass("active");
 				$(this).addClass("active");
+			});
+			$("li.bookmarkIt").click(function(){
+				if(!$(this).hasClass("bookmarked")){
+					record = $(this).data("record-value");
+					elem = $(this);
+					$.ajax({
+						type: "post",
+						url: "/bookmarkRecord/",
+						data: {"_token": "{{csrf_token()}}", "recordValue": record},
+						success: function(data){
+							if(data.status == "success"){
+								elem.addClass("bookmarked");
+								elem.html("Bookmarked");
+							}
+							else{
+								alert("error saving bookmark");
+							}
+						},
+						error: function(){
+							console.log("error saving bookmark");
+						}
+					});
+				}
 			});
 		});
 	</script>

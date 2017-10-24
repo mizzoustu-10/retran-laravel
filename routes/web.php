@@ -35,7 +35,8 @@ Route::get('search', function(){
 });
 */
 
-Route::get('bookmarkRecord/{count2}', 'bookmarkController@bookmarkRecord');
+// Route::get('bookmarkRecord/{count2}', 'bookmarkController@bookmarkRecord');
+Route::post('bookmarkRecord', 'bookmarkController@bookmarkRecord');
 Route::post('bookmark/{bookmark}', 'bookmarkController@destroyBookmark');
 
 # Account
