@@ -40,6 +40,6 @@ class bookmarkController extends Controller
 
 	public function destroyBookmark(Bookmark $bookmark){
 		$bookmark->delete();
-		return redirect()->route('account', ['user' => Auth::id()]);
+		return redirect()->route('account');
 	}
 }
