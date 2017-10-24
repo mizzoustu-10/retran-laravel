@@ -129,5 +129,5 @@
     color: black;
     font-weight: bold;
   }
-  li.bookmarkIt{list-style-type: none; color: #0087ff; cursor: pointer;}
+  li.bookmarkIt{list-style-type: none; color: #0087ff; cursor: pointer; display: inline-block;}
 li.bookmarked{color: #00ad00;}

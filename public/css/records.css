@@ -17,5 +17,5 @@
 #pageLinks ul.pagination li{display: inline-block; border: 1px solid #bbb; padding: 2px; background-color: #fff;}
 #pageLinks ul.pagination li.active{background-color: #00b8f4; color: #fff;}
 .row{margin-bottom: 0;}
-li.bookmarkIt{list-style-type: none; color: #0087ff; cursor: pointer;}
+li.bookmarkIt{list-style-type: none; color: #0087ff; cursor: pointer; display: inline-block;}
 li.bookmarked{color: #00ad00;}

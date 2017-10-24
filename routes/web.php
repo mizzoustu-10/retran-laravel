@@ -12,17 +12,36 @@
 */
 use App\Search;
 
+# Bookmarks
+Route::post('bookmarkRecord', 'bookmarkController@bookmarkRecord');
+Route::post('bookmark/{bookmark}', 'bookmarkController@destroyBookmark');
+
+# Account
+Route::get('/account', 'userController@show')->name('account');
+Route::get('/register', 'RegistrationController@create');
+Route::post ('/register', 'RegistrationController@store');
+Route::post('/login', 'SessionsController@store');
+Route::get('/logout', 'SessionsController@destroy');
+
+# Filters
+Route::post('saveFilter', 'filterController@saveFilter');
+Route::post('filter/{filter}', 'filterController@destroyFilter');
+
+# Home Page
 Route::get('/','homeController@index')->name('home');
 Route::get('/index','homeController@index')->name('login');
 Route::get('/batch','homeController@batch');
 
-Route::post('/login', 'SessionsController@store');
-Route::get('/logout', 'SessionsController@destroy');
-
-Route::get('/register', 'RegistrationController@create');
-Route::post ('/register', 'RegistrationController@store');
-
+# Record Views
 Route::get('viewRecordsGUI','firstController@index');
+Route::get('search/{count2}', 'SearchController@resultdetails');
+
+# Search
+Route::get('search', 'SearchController@index');
+Route::get('batchsearch', 'SearchController@batchsearch');
+Route::post('batchsearch', 'SearchController@batchsearch');
+
+
 /*
 
 //Route::get('search', 'SearchController@index');
@@ -35,16 +54,13 @@ Route::get('search', function(){
 });
 */
 
-// Route::get('bookmarkRecord/{count2}', 'bookmarkController@bookmarkRecord');
-Route::post('bookmarkRecord', 'bookmarkController@bookmarkRecord');
-Route::post('bookmark/{bookmark}', 'bookmarkController@destroyBookmark');
-
-# Account
-Route::get('/account', 'userController@show')->name('account');
 
 
 
-Route::get('search/{count2}', 'SearchController@resultdetails');
+
+
+
+
 
 //Replaces Below w/Controller
 /*
@@ -63,10 +79,7 @@ Route::get('searchresult', function(){
 });
 */
 
-Route::get('search', 'SearchController@index');
 
-Route::get('batchsearch', 'SearchController@batchsearch');
-Route::post('batchsearch', 'SearchController@batchsearch');
 /*
 Route::get('/view-records', function(){
     $query = Request::get('q');

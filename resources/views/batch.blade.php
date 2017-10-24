@@ -18,7 +18,7 @@
 				</ul>
 			</div>
 			<div class="row">
-				{{ Form::open(array('url' => '/batchsearch', 'method' => 'get')) }}
+				{{ Form::open(array('url' => '/batchsearch', 'method' => 'get', 'id' => 'searchFilters')) }}
 				{{csrf_field()}}
 				<div class="row">
 					<div class="col-md-6">
@@ -409,6 +409,32 @@
 					$("#modifySearch").click(function(){
 						$("#searchCollapse").hide();
 						$("#searchForm").css('height', height);
+					});
+					$("#saveSearch").click(function(){
+						if(!$(this).hasClass("filterSaved")){
+							var elem = $(this);
+							var form = $("#searchFilters");
+							$.ajax({
+								type: "post",
+								url: "/saveFilter",
+								data: form.serialize(),
+								success: function(data){
+									if(data.status == "success"){
+										elem.addClass("filterSaved");
+										elem.html("Saved");
+										console.log("success");
+									}
+									else{
+										alert("error saving filters");
+									}
+								},
+								error: function(){
+									console.log("error saving filters");
+								}
+							});
+						}
+						// $("#searchFilters").attr("action", "/saveFilter");
+						// $("#searchFilters").submit();
 					});
 				}
 			@endif

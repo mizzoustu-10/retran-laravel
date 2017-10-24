@@ -7,3 +7,4 @@ select{max-width: 100%;}
 .colDivider{border-right: 1px solid #e5e5e5;}
 #searchForm{overflow: hidden; transition: height 1s;}
 #searchCollapse{display: none;}
+.filterSaved{background: #00ad00;}
