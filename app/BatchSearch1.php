@@ -13,6 +13,15 @@ class BatchSearch1
         $to = request('enddate');
         $county = request('county');
         $city = request('city');
+        $bed = request('bed');
+        $bath = request('bath');
+        $minsq = intval(request('minsqft'));
+        $maxsq = intval(request('maxsqft'));
+        $minlot = request('minlot');
+        $maxlot = request('maxlot');
+        $units = request('units');
+        $minmls = request('minmls');
+        $maxmls = request('maxmls');
 
         $countcity = count($city);
         $countcounty = count($county);
@@ -92,6 +101,36 @@ class BatchSearch1
                 });
             }
         }
+
+        if ($bed != 0)
+        {
+            $search->where('bed', '=', $bed);
+        }
+        
+        if ($bath != 0)
+        {
+            $search->where(function ($query) use ($bath)
+            {
+                $bathdoto = $bath . ".0";
+                $bathhalf = $bath . ".5";
+                $query->where('bath', '=', $bath);
+                $query->orwhere('bath', '=', $bathdoto);
+                $query->orwhere('bath', '=', $bathhalf);
+            });
+        }
+
+        if ($maxsq = 0)
+        {
+            $maxsq = 99999;
+            $search->whereBetween('sq_feet', [$minsq, $maxsq]);
+        }
+        else
+        {
+            $search->whereBetween('sq_feet', [$minsq, $maxsq]);
+        }
+
+
+        
         $result = $search->paginate(10);
         
         return View('batch', ['search'=>$result]);
