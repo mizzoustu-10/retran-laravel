@@ -17,8 +17,8 @@ class BatchSearch1
         $bath = request('bath');
         $minsq = intval(request('minsqft'));
         $maxsq = intval(request('maxsqft'));
-        $minlot = request('minlot');
-        $maxlot = request('maxlot');
+        $minlot = intval(request('minlot'));
+        $maxlot = intval(request('maxlot'));
         $units = request('units');
         $minmls = request('minmls');
         $maxmls = request('maxmls');
@@ -119,7 +119,7 @@ class BatchSearch1
             });
         }
 
-        if ($maxsq = 0)
+        if ($maxsq == 0)
         {
             $maxsq = 99999;
             $search->whereBetween('sq_feet', [$minsq, $maxsq]);
@@ -129,7 +129,15 @@ class BatchSearch1
             $search->whereBetween('sq_feet', [$minsq, $maxsq]);
         }
 
-
+        if ($maxlot == 0)
+        {
+            $maxlot = 99999;
+            $search->whereBetween('lot_size', [$minlot, $maxlot]);
+        }
+        else
+        {
+            $search->whereBetween('lot_size', [$minlot, $maxlot]);
+        }
         
         $result = $search->paginate(10);
         
