@@ -4,6 +4,8 @@ namespace App;
 use App\Search;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\User;
+use Auth;
 
 class BatchSearch1
 {
@@ -140,7 +142,7 @@ class BatchSearch1
         }
         
         $result = $search->paginate(10);
-        
-        return View('batch', ['search'=>$result]);
+        $user = User::whereId(Auth::id())->firstOrFail();
+        return View('batch', ['search'=>$result], compact('user'));
     }
 }

@@ -15,9 +15,9 @@ class CreateFiltersTable extends Migration
     {
         Schema::create('filters', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userId');
+            $table->integer('user_id');
             $table->string('name');
-            $table->json('options');
+            $table->string('options');
         });
     }
 

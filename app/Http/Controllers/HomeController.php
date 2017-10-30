@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -10,9 +12,14 @@ class HomeController extends Controller
 		$this->middleware('auth')->except('index');
 	}
 	public function index(){
-		return view('index');
+		if(Auth::check()){
+			$user = User::whereId(Auth::id())->firstOrFail();
+			return view('fetch', compact('user'));
+		}
+		else return view('index');
 	}
 	public function batch(){
-		return view('batch');
+		$user = User::whereId(Auth::id())->firstOrFail();
+		return view('batch', compact('user'));
 	}
 }

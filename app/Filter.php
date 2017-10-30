@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Filter extends Model
 {
 	public $timestamps = false;
-	protected $fillable = [
-		'startdate', 'enddate', 'city', 'county', 'bed', 'bath', 'minsqft', 'maxsqft', 'minlot', 'maxlot', 'units', 'minmls', 'maxmls'
-	];
+	protected $fillable = ['options'];
 	public function user(){
 		return $this->belongsTo(User::class);
 	}

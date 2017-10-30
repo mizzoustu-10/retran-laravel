@@ -14,11 +14,11 @@ class filterController extends Controller
 	}
 
 	public function saveFilter(Request $request){
-		$name = date("F j, Y, g:i a");
+		$name = $request->name;
 		$filter = Filter::firstOrNew(array('name' => $name, 'user_id' => Auth::id()));
 		$filter->name = $name;
 		$filter->user_id = Auth::id();
-		$filter->fill($request->all());
+		$filter->options = $request->url;
 		$saved = $filter->save();
 		if($saved){
 			$response = array(

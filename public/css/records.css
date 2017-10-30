@@ -1,4 +1,4 @@
-#displayListingWrap{background-color: #efefef; padding-top: 50px;}
+#displayListingWrap{background-color: #efefef; padding-top: 100px;}
 .card{background-color: #fff; padding: 0 15px 0; margin-bottom: 10px;}
 .card .topBar{background-color: #fbfbfb; margin-bottom: 0;}
 .card .topBar .address{color: #0f6298;}
@@ -19,3 +19,4 @@
 .row{margin-bottom: 0;}
 li.bookmarkIt{list-style-type: none; color: #0087ff; cursor: pointer; display: inline-block;}
 li.bookmarked{color: #00ad00;}
+#noMatch{margin-top: 550px;}

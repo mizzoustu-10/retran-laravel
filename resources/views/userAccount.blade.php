@@ -24,13 +24,12 @@
 									</div>
 								</div>
 							@endforeach
-							</ul>
 						</div>
 						<div class="col-md-6">
 							<h3>Search Filters</h3>
 							@foreach($user->filters as $filter)
 								<div class="row">
-									<div class="col-md-5"><a href=""> {{ $filter->name }}</a></div>
+									<div class="col-md-5"><a href="/batchsearch?searchName={{$filter->name}}&{{$filter->options}}"> {{ $filter->name }}</a></div>
 									<div class="col-md-1">
 										<form action="/filter/{{$filter->id}}">
 											{{csrf_field()}}
@@ -39,7 +38,6 @@
 									</div>
 								</div>
 							@endforeach
-							</ul>
 						</div>
 					</div>
 				</div>

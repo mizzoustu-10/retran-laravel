@@ -165,7 +165,7 @@
 					</div>
 				</div>
 			@empty
-				<h2 class="taCenter">No Matches</h2>
+				<h2 class="taCenter" id="noMatch">No Matches</h2>
 			@endforelse
 			<div id="pageLinks">
 			{{ $search->appends($_GET)->render() }}

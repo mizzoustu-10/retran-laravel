@@ -1,4 +1,4 @@
-.filterWrap{background-color: #464f58; padding: 25px 10px;}
+.filterWrap{background-color: #464f58; padding: 25px 10px 10px; position: absolute; top: 45px; z-index: 5; left: 0; width: 100%;}
 #searchCategoryWrap{background-color: #606c7a;}
 #searchCategoryWrap a{color: #fff;}
 input{max-width: 100%; background-color: #e8e8e8; border: 1px solid #a5a5a5; padding: 2px 3px;}
@@ -8,3 +8,4 @@ select{max-width: 100%;}
 #searchForm{overflow: hidden; transition: height 1s;}
 #searchCollapse{display: none;}
 .filterSaved{background: #00ad00;}
+#min:hover{cursor: pointer;}

@@ -43,6 +43,24 @@
 						</div>
 						<div class="col-md-12 rounded bgW nested mb10">
 							<h5>My Saved Filters</h5>
+							@if(isset($user))
+								<?php $filterCounter = 0; ?>
+								@foreach($user->filters as $filter)
+									@if($filterCounter == 0)
+										<div class="row">
+											<div class="col-md-5"><a href="/batchsearch?searchName={{$filter->name}}&{{$filter->options}}"> {{ $filter->name }}</a></div>
+											<div class="col-md-1"></div>
+										<?php $filterCounter++; ?>
+									@else
+											<div class="col-md-5"><a href="/batchsearch?searchName={{$filter->name}}&{{$filter->options}}"> {{ $filter->name }}</a></div>
+										</div>
+										<?php $filterCounter--; ?>
+									@endif
+								@endforeach
+								@if($filterCounter == 1)
+									</div>
+								@endif
+							@endif
 						</div>
 						<div class="col-md-12 rounded bgW nested">
 							<h5>Other Types</h5>
@@ -373,21 +391,30 @@
 				</div>
 				{{ Form::submit('Search', array('class' => 'btn btn-primary')) }}
 				{{ Form::close() }}
+				@if(isset($search))
+					@if(count($search) > 0)
+						<div class="col-md-12 taCenter">
+							<img src="/img/doubleUpCarrot.png" id="min" class="taCenter" width="50">
+						</div>
+					@endif
+				@endif
 			</div>
 		</div>
 		<div class="container" id="searchCollapse">
 			<div class="row">
 				<div class="col-md-3"></div>
 				<div class="col-md-2">
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary" id="modifySearch">Modify Search</button>
-					</div>
+					<button type="submit" class="btn btn-primary" id="modifySearch">Modify Search</button>
 				</div>
 				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<div class="form-group">
-						<button type="submit" class="btn" id="saveSearch">Save Search</button>
-					</div>
+				<div class="col-md-4">
+					@if(app('request')->input('searchName'))
+						{{ Form::text('searchName', '', array('id' => 'searchName', 'placeholder' => 'searchName', 'disabled' => 'disabled')) }}
+						<button type="submit" class="btn filterSaved" id="saveSearch">Saved</button>
+					@else
+						{{ Form::text('searchName', '', array('id' => 'searchName', 'placeholder' => 'searchName')) }}
+						<button type="submit" class="btn btn-primary" id="saveSearch">Save Search</button>
+					@endif
 				</div>
 			</div>
 		</div>
@@ -407,34 +434,41 @@
 					$("#searchForm").css('height', 0);
 					$("#searchCollapse").show();
 					$("#modifySearch").click(function(){
-						$("#searchCollapse").hide();
 						$("#searchForm").css('height', height);
+						$("#searchCollapse").fadeOut();
+					});
+					$("#min").click(function(){
+						$("#searchForm").css('height', 0);
+						$("#searchCollapse").fadeIn();
 					});
 					$("#saveSearch").click(function(){
 						if(!$(this).hasClass("filterSaved")){
 							var elem = $(this);
-							var form = $("#searchFilters");
-							$.ajax({
-								type: "post",
-								url: "/saveFilter",
-								data: form.serialize(),
-								success: function(data){
-									if(data.status == "success"){
-										elem.addClass("filterSaved");
-										elem.html("Saved");
-										console.log("success");
+							var url = window.location.href.split('?')[1];
+							var name = $("#searchName").val();
+							if(name == "") alert("Please enter a name for your seach filters");
+							else{
+								$.ajax({
+									type: "post",
+									url: "/saveFilter",
+									data: {"_token": "{{csrf_token()}}", "url": url, "name": name},
+									success: function(data){
+										if(data.status == "success"){
+											elem.addClass("filterSaved");
+											elem.removeClass("btn-primary");
+											elem.html("Saved");
+											console.log("success");
+										}
+										else{
+											alert("error saving filters");
+										}
+									},
+									error: function(){
+										console.log("error saving filters");
 									}
-									else{
-										alert("error saving filters");
-									}
-								},
-								error: function(){
-									console.log("error saving filters");
-								}
-							});
+								});
+							}
 						}
-						// $("#searchFilters").attr("action", "/saveFilter");
-						// $("#searchFilters").submit();
 					});
 				}
 			@endif
